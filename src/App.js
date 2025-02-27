@@ -1,25 +1,21 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home';
 import CreateList from './Pages/CreateList';
+import ViewLists from './Pages/ViewLists';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <img 
-          src="https://via.placeholder.com/100" 
-          alt="Tentacle Logo" 
-          style={{ borderRadius: '50%', marginBottom: '20px' }}
-        />
-        <h1>Tentacle</h1>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create-list" element={<CreateList />} />
+          <Route path="/view-lists" element={<ViewLists />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

@@ -8,9 +8,13 @@ function Home() {
 
   return (
     <div className="home-container">
-      <p>"Connect, Share, and Celebrate Your Top 10!"</p>
+      <h1>Welcome to Tentacle</h1>
+      <p>Showcase your personality with your own Top 10 lists!</p>
       <button onClick={() => navigate('/create-list')}>
         Create Your List
+      </button>
+      <button onClick={() => navigate('/view-lists')} style={{ marginLeft: '10px' }}>
+        View Saved Lists
       </button>
     </div>
   );
