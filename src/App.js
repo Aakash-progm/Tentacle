@@ -15,7 +15,6 @@ function App() {
           style={{ borderRadius: '50%', marginBottom: '20px' }}
         />
         <h1>Tentacle</h1>
-        <p>Showcase your personality with your own Top 10 lists!</p>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create-list" element={<CreateList />} />

@@ -8,8 +8,7 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1>Welcome to Tentacle</h1>
-      <p>Showcase your personality with your own Top 10 lists!</p>
+      <p>"Connect, Share, and Celebrate Your Top 10!"</p>
       <button onClick={() => navigate('/create-list')}>
         Create Your List
       </button>

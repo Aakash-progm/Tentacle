@@ -5,22 +5,25 @@ import './CreateList.css';
 function CreateList() {
   const [listName, setListName] = useState('');
   const [items, setItems] = useState(Array(10).fill(''));
+  const [confirmation, setConfirmation] = useState('');
 
-  // Handle changes in the list name
   const handleListNameChange = (e) => {
     setListName(e.target.value);
   };
 
-  // Handle changes for each item in the list
   const handleItemChange = (index, value) => {
     const newItems = [...items];
     newItems[index] = value;
     setItems(newItems);
   };
 
-  // Save list to local storage
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!listName.trim() || items.some((item) => !item.trim())) {
+      setConfirmation('Please fill out all fields.');
+      return;
+    }
 
     const newList = {
       listName,
@@ -28,23 +31,22 @@ function CreateList() {
       timestamp: new Date().toISOString(),
     };
 
-    // Get existing lists or start with an empty array
     const savedLists = JSON.parse(localStorage.getItem('top10Lists')) || [];
     savedLists.push(newList);
 
-    // Save the updated lists back to local storage
     localStorage.setItem('top10Lists', JSON.stringify(savedLists));
 
-    alert('List saved!');
-
-    // Clear the form
+    setConfirmation('List saved successfully!');
     setListName('');
     setItems(Array(10).fill(''));
+
+    setTimeout(() => setConfirmation(''), 3000); // Auto-hide message after 3 seconds
   };
 
   return (
     <div className="create-list-container">
       <h1>Create Your Top 10 List</h1>
+      {confirmation && <p className="confirmation">{confirmation}</p>}
       <form onSubmit={handleSubmit}>
         <label>List Name:</label>
         <input
@@ -75,3 +77,4 @@ function CreateList() {
 }
 
 export default CreateList;
+
